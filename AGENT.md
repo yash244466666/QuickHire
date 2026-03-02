@@ -3,11 +3,12 @@
 ## Project Overview
 QuickHire is a full-stack job board application built as a monorepo.
 
-| Layer     | Stack                          | Location    |
-|-----------|-------------------------------|-------------|
-| Frontend  | Next.js 14 (App Router) + Tailwind CSS | `frontend/` |
-| Backend   | Node.js + Express + Prisma ORM | `backend/`  |
-| Database  | PostgreSQL                     | Docker / local |
+| Layer     | Stack                                          | Location       |
+|-----------|------------------------------------------------|----------------|
+| Frontend  | Next.js 14 (App Router) + Tailwind CSS         | `frontend/`    |
+| Backend   | Node.js + Express + Prisma 7.4.2               | `backend/`     |
+| Database  | PostgreSQL 16                                  | Docker         |
+| API Docs  | Swagger UI at `http://localhost:4001/api/docs` | auto-generated |
 
 ---
 
@@ -71,7 +72,7 @@ QuickHire/
 │   ├── public/
 │   │   └── images/
 │   ├── tailwind.config.ts
-│   ├── next.config.ts
+│   ├── next.config.mjs
 │   ├── tsconfig.json
 │   └── package.json
 │
@@ -233,13 +234,14 @@ model Application {
 ### Backend (`backend/.env`)
 ```
 DATABASE_URL="postgresql://postgres:postgres@localhost:5432/quickhire"
-PORT=4000
+PORT=4001
 NODE_ENV=development
+FRONTEND_URL=http://localhost:3000
 ```
 
 ### Frontend (`frontend/.env.local`)
 ```
-NEXT_PUBLIC_API_URL=http://localhost:4000
+NEXT_PUBLIC_API_URL=http://localhost:4001
 ```
 
 ---
@@ -249,7 +251,7 @@ NEXT_PUBLIC_API_URL=http://localhost:4000
 ### Start everything
 ```bash
 # Terminal 1 — Backend
-cd backend && npm run dev    # runs on :4000
+cd backend && npm run dev    # runs on :4001 | Swagger: http://localhost:4001/api/docs
 
 # Terminal 2 — Frontend  
 cd frontend && npm run dev   # runs on :3000
@@ -259,7 +261,7 @@ cd frontend && npm run dev   # runs on :3000
 ```bash
 cd backend
 npx prisma migrate dev --name init
-npx prisma db seed
+npx ts-node --project prisma/tsconfig.json prisma/seed.ts  # seeds 12 jobs
 npx prisma studio            # visual DB browser
 ```
 

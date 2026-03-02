@@ -19,12 +19,13 @@ A full-stack job board application built with **Next.js 14**, **Node.js/Express*
 
 ## 🛠 Tech Stack
 
-| Layer      | Technology                          |
-|------------|-------------------------------------|
-| Frontend   | Next.js 14, TypeScript, Tailwind CSS |
-| Backend    | Node.js, Express, TypeScript        |
-| ORM        | Prisma                              |
-| Database   | PostgreSQL                          |
+| Layer      | Technology                                        |
+|------------|---------------------------------------------------|
+| Frontend   | Next.js 14, TypeScript, Tailwind CSS              |
+| Backend    | Node.js, Express, TypeScript                      |
+| ORM        | Prisma 7.4.2 + `@prisma/adapter-pg`               |
+| Database   | PostgreSQL 16 (Docker)                            |
+| API Docs   | Swagger UI (`swagger-jsdoc` + `swagger-ui-express`) |
 
 ---
 
@@ -53,8 +54,8 @@ QuickHire/
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/quickhire.git
-cd quickhire
+git clone https://github.com/yash244466666/QuickHire.git
+cd QuickHire
 ```
 
 ### 2. Start the database
@@ -82,7 +83,7 @@ npm install
 ```bash
 cd backend
 npx prisma migrate dev --name init
-npx ts-node prisma/seed.ts   # seeds 12 sample jobs
+npx ts-node --project prisma/tsconfig.json prisma/seed.ts   # seeds 12 sample jobs
 cd ..
 ```
 
@@ -93,14 +94,20 @@ cd ..
 npm run dev
 
 # Or separately:
-# Backend  → http://localhost:4000
+# Backend  → http://localhost:4001
 cd backend && npm run dev
 
 # Frontend → http://localhost:3000
 cd frontend && npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) to view the app.
+| Service       | URL                                    |
+|---------------|----------------------------------------|
+| Frontend      | http://localhost:3000                  |
+| Backend API   | http://localhost:4001                  |
+| Swagger Docs  | http://localhost:4001/api/docs         |
+| Swagger JSON  | http://localhost:4001/api/docs.json    |
+| pgAdmin 4     | http://localhost:5050                  |
 
 ---
 
@@ -137,20 +144,24 @@ docker compose logs -f postgres
 
 | Variable              | Description        | Example                      |
 |-----------------------|--------------------|------------------------------|
-| `NEXT_PUBLIC_API_URL` | Backend API URL    | `http://localhost:4000`      |
+| `NEXT_PUBLIC_API_URL` | Backend API URL    | `http://localhost:4001`      |
 
 ---
 
 ## 📡 API Endpoints
 
-| Method | Endpoint                | Description              |
-|--------|-------------------------|--------------------------|
-| GET    | `/api/jobs`             | List all jobs (filterable) |
-| GET    | `/api/jobs/:id`         | Get job details          |
-| POST   | `/api/jobs`             | Create a job (admin)     |
-| DELETE | `/api/jobs/:id`         | Delete a job (admin)     |
-| POST   | `/api/applications`     | Submit application       |
-| GET    | `/api/applications`     | List all applications    |
+| Method | Endpoint                | Description                          |
+|--------|-------------------------|--------------------------------------|
+| GET    | `/api/health`           | Health check                         |
+| GET    | `/api/jobs`             | List all jobs (filterable, paginated) |
+| GET    | `/api/jobs/:id`         | Get job details                      |
+| POST   | `/api/jobs`             | Create a job (admin)                 |
+| DELETE | `/api/jobs/:id`         | Delete a job (admin)                 |
+| POST   | `/api/applications`     | Submit application                   |
+| GET    | `/api/applications`     | List all applications (admin)        |
+
+> **Interactive API docs** available at http://localhost:4001/api/docs (Swagger UI)  
+> All new endpoint files in `backend/src/routes/` are automatically registered in the docs via JSDoc `@openapi` annotations.
 
 ### Query Params for `GET /api/jobs`
 
@@ -190,11 +201,12 @@ Font: **Epilogue** (Google Fonts)
 
 ## 📖 Pages
 
-| Route               | Description              |
-|---------------------|--------------------------|
-| `/`                 | Landing page             |
-| `/jobs`             | Job listings with search/filter |
-| `/jobs/:id`         | Job detail + apply form  |
-| `/admin`            | Admin dashboard          |
-| `/admin/jobs`       | Manage job listings      |
-| `/admin/applicants` | View all applications    |
+| Route               | Description                       |
+|---------------------|-----------------------------------|
+| `/`                 | Landing page                      |
+| `/jobs`             | Job listings with search/filter   |
+| `/jobs/:id`         | Job detail + apply form           |
+| `/admin`            | Admin dashboard                   |
+| `/admin/jobs`       | Manage job listings               |
+| `/admin/applicants` | View all applications             |
+| `/admin/settings`   | Settings (stub)                   |
