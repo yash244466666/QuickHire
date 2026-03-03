@@ -1,3 +1,5 @@
+'use client';
+
 import Image from 'next/image';
 
 interface CompanyLogoProps {
@@ -7,8 +9,6 @@ interface CompanyLogoProps {
 }
 
 export default function CompanyLogo({ name, logo, size = 48 }: CompanyLogoProps) {
-  const fallbackUrl = `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&size=${size * 2}&background=4640DE&color=fff&bold=true&format=svg`;
-
   if (logo) {
     return (
       <div
@@ -22,7 +22,7 @@ export default function CompanyLogo({ name, logo, size = 48 }: CompanyLogoProps)
           height={size}
           className="object-contain"
           onError={(e) => {
-            (e.target as HTMLImageElement).src = fallbackUrl;
+            (e.target as HTMLImageElement).style.display = 'none';
           }}
         />
       </div>
@@ -31,16 +31,10 @@ export default function CompanyLogo({ name, logo, size = 48 }: CompanyLogoProps)
 
   return (
     <div
-      className="rounded-md overflow-hidden flex-shrink-0"
+      className="rounded-md overflow-hidden flex-shrink-0 bg-primary flex items-center justify-center border border-neutrals-20"
       style={{ width: size, height: size }}
     >
-      <Image
-        src={fallbackUrl}
-        alt={`${name} logo`}
-        width={size}
-        height={size}
-        className="object-contain"
-      />
+      <span style={{ color: '#fff', fontWeight: 'bold', fontSize: `${size / 2.5}px` }}>{name ? name.substring(0, 2).toUpperCase() : 'NA'}</span>
     </div>
   );
 }

@@ -2,14 +2,14 @@ import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 
 const categories = [
-  { name: 'Design', icon: '🎨', jobs: 235, active: false },
-  { name: 'Sales', icon: '📊', jobs: 756, active: false },
-  { name: 'Marketing', icon: '📣', jobs: 310, active: true },
-  { name: 'Finance', icon: '💰', jobs: 89, active: false },
-  { name: 'Engineering', icon: '⚙️', jobs: 542, active: false },
-  { name: 'Business', icon: '💼', jobs: 178, active: false },
-  { name: 'HR', icon: '👥', jobs: 143, active: false },
-  { name: 'Tech', icon: '💻', jobs: 621, active: false },
+  { name: 'Design', icon: '🎨', jobs: 235 },
+  { name: 'Sales', icon: '📊', jobs: 756 },
+  { name: 'Marketing', icon: '📣', jobs: 310 },
+  { name: 'Finance', icon: '💰', jobs: 89 },
+  { name: 'Engineering', icon: '⚙️', jobs: 542 },
+  { name: 'Business', icon: '💼', jobs: 178 },
+  { name: 'HR', icon: '👥', jobs: 143 },
+  { name: 'Tech', icon: '💻', jobs: 621 },
 ];
 
 export default function CategorySection() {
@@ -32,32 +32,17 @@ export default function CategorySection() {
           {categories.map((cat) => (
             <Link key={cat.name} href={`/jobs?category=${cat.name}`}>
               <div
-                className={`rounded-md p-6 border transition-all duration-200 group cursor-pointer
-                  ${
-                    cat.active
-                      ? 'bg-primary border-primary text-white'
-                      : 'bg-white border-neutrals-20 hover:border-primary hover:bg-primary-25'
-                  }`}
+                className="rounded-md p-6 border transition-all duration-200 group cursor-pointer bg-white border-neutrals-20 hover:border-primary hover:bg-primary-25"
               >
                 <span className="text-3xl mb-4 block">{cat.icon}</span>
-                <h3
-                  className={`font-semibold text-body-lg mb-1 ${
-                    cat.active ? 'text-white' : 'text-neutrals-100'
-                  }`}
-                >
+                <h3 className="font-semibold text-body-lg mb-1 text-neutrals-100">
                   {cat.name}
                 </h3>
-                <div
-                  className={`flex items-center gap-2 text-body-sm ${
-                    cat.active ? 'text-white/80' : 'text-neutrals-60'
-                  }`}
-                >
+                <div className="flex items-center gap-2 text-body-sm text-neutrals-60">
                   <span>{cat.jobs} jobs available</span>
                   <ArrowRight
                     size={14}
-                    className={`opacity-0 group-hover:opacity-100 transition-opacity ${
-                      cat.active ? 'opacity-100' : ''
-                    }`}
+                    className="opacity-0 group-hover:opacity-100 transition-opacity"
                   />
                 </div>
               </div>

@@ -1,11 +1,14 @@
 'use client';
 
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const pathname = usePathname();
+  const isAdmin = pathname?.startsWith('/admin');
 
   return (
     <nav className="bg-white border-b border-neutrals-20 sticky top-0 z-50">
@@ -27,21 +30,29 @@ export default function Navbar() {
             Find Jobs
           </Link>
           <Link
-            href="/admin"
+            href="/jobs"
             className="text-body-md font-medium text-neutrals-80 hover:text-primary transition-colors"
           >
             Browse Companies
           </Link>
+          {isAdmin && (
+            <Link
+              href="/admin"
+              className="text-body-md font-medium text-primary transition-colors"
+            >
+              Admin Panel
+            </Link>
+          )}
         </div>
 
         {/* Desktop CTA */}
         <div className="hidden md:flex items-center gap-4">
           <Link href="/admin" className="btn-ghost text-sm">
-            Admin Panel
+            Login
           </Link>
           <div className="w-px h-6 bg-neutrals-20" />
-          <Link href="/jobs" className="btn-primary text-sm py-2.5 px-5">
-            Post a Job
+          <Link href="/admin/jobs" className="btn-primary text-sm py-2.5 px-5">
+            Sign Up
           </Link>
         </div>
 
@@ -66,18 +77,27 @@ export default function Navbar() {
             Find Jobs
           </Link>
           <Link
-            href="/admin"
+            href="/jobs"
             className="text-body-md font-medium text-neutrals-80 hover:text-primary py-2"
             onClick={() => setMobileOpen(false)}
           >
             Browse Companies
           </Link>
+          {isAdmin && (
+            <Link
+              href="/admin"
+              className="text-body-md font-medium text-primary py-2"
+              onClick={() => setMobileOpen(false)}
+            >
+              Admin Panel
+            </Link>
+          )}
           <hr className="border-neutrals-20" />
-          <Link href="/admin" className="btn-ghost text-sm text-center">
-            Admin Panel
+          <Link href="/admin" className="btn-ghost text-sm text-center" onClick={() => setMobileOpen(false)}>
+            Login
           </Link>
-          <Link href="/jobs" className="btn-primary text-sm text-center py-3">
-            Post a Job
+          <Link href="/admin/jobs" className="btn-primary text-sm text-center py-3" onClick={() => setMobileOpen(false)}>
+            Sign Up
           </Link>
         </div>
       )}

@@ -37,3 +37,4 @@ backend/prisma/dev.db-journal
 
 # TypeScript
 *.tsbuildinfo
+.playwright-mcp/

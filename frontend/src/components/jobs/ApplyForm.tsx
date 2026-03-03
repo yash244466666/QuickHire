@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import toast from 'react-hot-toast';
 import { createApplication } from '@/lib/api';
 import { CreateApplicationInput } from '@/lib/types';
 import { X, CheckCircle } from 'lucide-react';
@@ -32,8 +33,11 @@ export default function ApplyForm({ jobId, jobTitle, company, onClose }: ApplyFo
     try {
       await createApplication(form);
       setSuccess(true);
+      toast.success('Application submitted successfully! Good luck! 🎉');
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Something went wrong');
+      const msg = err instanceof Error ? err.message : 'Something went wrong';
+      setError(msg);
+      toast.error(msg);
     } finally {
       setLoading(false);
     }
