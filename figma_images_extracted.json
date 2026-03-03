@@ -1,0 +1,212 @@
+[
+  {
+    "id": "I1:2033;78:2425",
+    "name": "billboard-vector-logo 1",
+    "type": "FRAME"
+  },
+  {
+    "id": "I1:2033;78:2434",
+    "name": "vodafone-2017-logo",
+    "type": "FRAME"
+  },
+  {
+    "id": "I1:2033;78:2408",
+    "name": "amd-logo-1",
+    "type": "FRAME"
+  },
+  {
+    "id": "I1:2035;2017:39897;406:10121",
+    "name": "Logo 2",
+    "type": "FRAME"
+  },
+  {
+    "id": "I1:2035;2017:39899;406:16115",
+    "name": "Company Logo",
+    "type": "INSTANCE"
+  },
+  {
+    "id": "I1:2035;2017:40053;130:5591",
+    "name": "Company Logo",
+    "type": "INSTANCE"
+  },
+  {
+    "id": "I1:2035;2017:40054;130:5591",
+    "name": "Company Logo",
+    "type": "INSTANCE"
+  },
+  {
+    "id": "I1:2035;2017:40055;130:5591",
+    "name": "Company Logo",
+    "type": "INSTANCE"
+  },
+  {
+    "id": "I1:2035;2017:40056;130:5591",
+    "name": "Company Logo",
+    "type": "INSTANCE"
+  },
+  {
+    "id": "I1:2036;286:7480;114:3009",
+    "name": "Company Logo",
+    "type": "INSTANCE"
+  },
+  {
+    "id": "I1:2036;286:7499;114:3009",
+    "name": "Company Logo",
+    "type": "INSTANCE"
+  },
+  {
+    "id": "I1:2036;286:7518;114:3009",
+    "name": "Company Logo",
+    "type": "INSTANCE"
+  },
+  {
+    "id": "I1:2036;286:7538;114:3009",
+    "name": "Company Logo",
+    "type": "INSTANCE"
+  },
+  {
+    "id": "I1:2036;288:7576;114:3009",
+    "name": "Company Logo",
+    "type": "INSTANCE"
+  },
+  {
+    "id": "I1:2036;288:7577;114:3009",
+    "name": "Company Logo",
+    "type": "INSTANCE"
+  },
+  {
+    "id": "I1:2036;288:7578;114:3009",
+    "name": "Company Logo",
+    "type": "INSTANCE"
+  },
+  {
+    "id": "I1:2036;288:7578;114:3009;51:1275",
+    "name": "godaddy-logo-0 1",
+    "type": "RECTANGLE"
+  },
+  {
+    "id": "I1:2036;288:7579;114:3009",
+    "name": "Company Logo",
+    "type": "INSTANCE"
+  },
+  {
+    "id": "I1:2037;51:1383;278:9075",
+    "name": "Company Logo",
+    "type": "INSTANCE"
+  },
+  {
+    "id": "I1:2037;51:1406;278:9075",
+    "name": "Company Logo",
+    "type": "INSTANCE"
+  },
+  {
+    "id": "I1:2037;51:1434;278:9075",
+    "name": "Company Logo",
+    "type": "INSTANCE"
+  },
+  {
+    "id": "I1:2037;51:1462;278:9075",
+    "name": "Company Logo",
+    "type": "INSTANCE"
+  },
+  {
+    "id": "I1:2037;292:8554;278:9075",
+    "name": "Company Logo",
+    "type": "INSTANCE"
+  },
+  {
+    "id": "I1:2037;292:8554;278:9075;51:1271",
+    "name": "netlify-logo 1",
+    "type": "RECTANGLE"
+  },
+  {
+    "id": "I1:2037;292:8555;278:9075",
+    "name": "Company Logo",
+    "type": "INSTANCE"
+  },
+  {
+    "id": "I1:2037;292:8556;278:9075",
+    "name": "Company Logo",
+    "type": "INSTANCE"
+  },
+  {
+    "id": "I1:2037;292:8557;278:9075",
+    "name": "Company Logo",
+    "type": "INSTANCE"
+  },
+  {
+    "id": "I1:2042;686:18593",
+    "name": "billboard-vector-logo 1",
+    "type": "FRAME"
+  },
+  {
+    "id": "I1:2042;686:18602",
+    "name": "vodafone-2017-logo",
+    "type": "FRAME"
+  },
+  {
+    "id": "I1:2042;686:18615",
+    "name": "amd-logo-1",
+    "type": "FRAME"
+  },
+  {
+    "id": "I1:2044;688:21016",
+    "name": "Company Logo",
+    "type": "INSTANCE"
+  },
+  {
+    "id": "I1:2045;689:21220;114:3009",
+    "name": "Company Logo",
+    "type": "INSTANCE"
+  },
+  {
+    "id": "I1:2045;689:21221;114:3009",
+    "name": "Company Logo",
+    "type": "INSTANCE"
+  },
+  {
+    "id": "I1:2045;689:21222;114:3009",
+    "name": "Company Logo",
+    "type": "INSTANCE"
+  },
+  {
+    "id": "I1:2045;689:21223;114:3009",
+    "name": "Company Logo",
+    "type": "INSTANCE"
+  },
+  {
+    "id": "I1:2046;690:22353;691:31433",
+    "name": "Company Logo",
+    "type": "INSTANCE"
+  },
+  {
+    "id": "I1:2046;690:21784;691:31433",
+    "name": "Company Logo",
+    "type": "INSTANCE"
+  },
+  {
+    "id": "I1:2046;690:21785;691:31433",
+    "name": "Company Logo",
+    "type": "INSTANCE"
+  },
+  {
+    "id": "I1:2046;690:21786;691:31433",
+    "name": "Company Logo",
+    "type": "INSTANCE"
+  },
+  {
+    "id": "I1:2046;690:21788;691:31433",
+    "name": "Company Logo",
+    "type": "INSTANCE"
+  },
+  {
+    "id": "I1:2046;690:21788;691:31433;51:1271",
+    "name": "netlify-logo 1",
+    "type": "RECTANGLE"
+  },
+  {
+    "id": "I1:2046;690:21789;691:31433",
+    "name": "Company Logo",
+    "type": "INSTANCE"
+  }
+]

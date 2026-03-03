@@ -8,7 +8,7 @@ import {
   Application,
 } from './types';
 
-const BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000';
+const BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4001';
 
 async function fetchApi<T>(
   endpoint: string,

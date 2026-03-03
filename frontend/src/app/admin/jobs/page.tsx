@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { Plus, Trash2, Eye, Search } from 'lucide-react';
 import Link from 'next/link';
+import toast from 'react-hot-toast';
 import { getJobs, createJob, deleteJob } from '@/lib/api';
 import { Job, CreateJobInput, JOB_CATEGORIES, JOB_TYPES } from '@/lib/types';
 import Badge from '@/components/ui/Badge';
@@ -61,6 +62,7 @@ export default function AdminJobsPage() {
     setFormError('');
     try {
       await createJob(form);
+      toast.success('Job posted successfully!');
       setShowForm(false);
       setForm({
         title: '',
@@ -74,18 +76,23 @@ export default function AdminJobsPage() {
       });
       fetchJobs();
     } catch (err) {
-      setFormError(err instanceof Error ? err.message : 'Failed to create job');
+      const msg = err instanceof Error ? err.message : 'Failed to create job';
+      setFormError(msg);
+      toast.error(msg);
     } finally {
       setSubmitting(false);
     }
   };
 
   const handleDelete = async (id: number) => {
+    const job = jobs.find(j => j.id === id);
     try {
       await deleteJob(id);
       setDeleteConfirm(null);
+      toast.success(`"${job?.title || 'Job'}" deleted successfully.`);
       fetchJobs();
     } catch (err) {
+      toast.error('Failed to delete job. Please try again.');
       console.error(err);
     }
   };
@@ -335,7 +342,7 @@ export default function AdminJobsPage() {
                 <input
                   type="url"
                   className="input-field"
-                  placeholder="https://logo.clearbit.com/company.com"
+                  placeholder="/images/companies/company_logo.svg"
                   value={form.logo}
                   onChange={(e) => setForm({ ...form, logo: e.target.value })}
                 />

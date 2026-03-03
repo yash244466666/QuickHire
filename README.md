@@ -8,12 +8,15 @@ A full-stack job board application built with **Next.js 14**, **Node.js/Express*
 
 ## ✨ Features
 
-- 🗂 **Job Listings** — Browse, search, and filter jobs by category, location, and type  
-- 📄 **Job Detail** — Full job description with application form (modal)  
-- 📝 **Apply Now** — Submit name, email, resume link, and cover note  
-- 🔐 **Admin Panel** — Post job listings, delete jobs, view all applications  
-- 📱 **Responsive** — Works on desktop and mobile  
-- ⚡ **Fast** — Next.js 14 App Router with server components
+- 🗂 **Job Listings** — Browse, search, and filter jobs by category, location, and type; URL-synced filters
+- 📄 **Job Detail** — Full job description with application form (modal), applicant count
+- 📝 **Apply Now** — Submit name, email, resume link, and cover note with validation + toast feedback
+- 🔐 **Admin Panel** — Post job listings, delete jobs (with confirmation), view all applications
+- 🔔 **Toast Notifications** — Success/error feedback on all mutations
+- ⏳ **Loading Skeletons** — Skeleton screens on all data-fetching pages
+- 📱 **Responsive** — Works on desktop, tablet, and mobile
+- ⚡ **Fast** — Next.js 14 App Router with server components + Suspense boundaries
+- 📚 **API Docs** — Interactive Swagger UI at `/api/docs`
 
 ---
 
@@ -26,6 +29,8 @@ A full-stack job board application built with **Next.js 14**, **Node.js/Express*
 | ORM        | Prisma 7.4.2 + `@prisma/adapter-pg`               |
 | Database   | PostgreSQL 16 (Docker)                            |
 | API Docs   | Swagger UI (`swagger-jsdoc` + `swagger-ui-express`) |
+| Unit Tests | Jest 29, ts-jest, @testing-library/react          |
+| E2E Tests  | Playwright (Chromium)                             |
 
 ---
 
@@ -136,7 +141,7 @@ docker compose logs -f postgres
 | Variable        | Description                          | Example                                           |
 |-----------------|--------------------------------------|---------------------------------------------------|
 | `DATABASE_URL`  | PostgreSQL connection string         | `postgresql://postgres:pass@localhost:5432/quickhire` |
-| `PORT`          | API server port                      | `4000`                                            |
+| `PORT`          | API server port                      | `4001`                                            |
 | `NODE_ENV`      | Environment                          | `development`                                     |
 | `FRONTEND_URL`  | Frontend URL (for CORS)              | `http://localhost:3000`                            |
 
@@ -182,6 +187,44 @@ id, title, company, location, category, type, description, logo, salary, created
 -- Applications table
 id, job_id (FK → jobs), name, email, resume_link, cover_note, created_at
 ```
+
+---
+
+## 🧪 Testing
+
+### Unit Tests (Jest + Testing Library)
+
+```bash
+# Backend — 55 tests (validators, middleware, integration)
+cd backend && npm test
+cd backend && npm run test:coverage
+
+# Frontend — 40 tests (Badge, JobCard, API client)
+cd frontend && npm test
+cd frontend && npm run test:coverage
+```
+
+### E2E Tests (Playwright)
+
+```bash
+# Install Chromium browser (first time only)
+cd frontend && npx playwright install chromium
+
+# Run all E2E tests (requires dev servers running)
+cd frontend && npm run test:e2e
+
+# Run with interactive UI
+cd frontend && npm run test:e2e:ui
+```
+
+> **Note:** Start `docker compose up -d`, `cd backend && npm run dev`, and `cd frontend && npm run dev` before running E2E tests.
+
+| Test Suite | Count | Coverage |
+|---|---|---|
+| Backend unit + integration | 55 | Validators, middleware, jobs CRUD, applications |
+| Frontend unit | 40 | Components (Badge, JobCard), API client |
+| Playwright E2E | 34 | Landing, jobs listing, job detail, admin panel |
+| **Total** | **129** | |
 
 ---
 

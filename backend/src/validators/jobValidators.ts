@@ -15,6 +15,6 @@ export const createJobValidators = [
     .optional()
     .isIn(['Full-Time', 'Part-Time', 'Remote', 'Contract', 'Internship'])
     .withMessage('Invalid job type'),
-  body('salary').optional().trim(),
-  body('logo').optional().isURL().withMessage('Logo must be a valid URL'),
+  body('salary').optional({ checkFalsy: true }).trim(),
+  body('logo').optional({ checkFalsy: true }).isURL().withMessage('Logo must be a valid URL'),
 ];
